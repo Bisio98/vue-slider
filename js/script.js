@@ -46,5 +46,14 @@ var app = new Vue({
         immediatelyActive: function(index) {
             this.currentActiveSlide = index;
         }
+    },
+    created: function () {
+        setInterval(() => {
+            if(this.currentActiveSlide < this.slides.length -1){
+                this.currentActiveSlide++;
+            }else{
+                this.currentActiveSlide = 0;
+            }
+        }, 3000)
     }
 });
