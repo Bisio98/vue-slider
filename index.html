@@ -41,8 +41,8 @@
                     </div>
                     <!-- End Arrow down -->
     
-                    <div v-for="element, index in slides" class="single-thumb" :class="{'active': index === currentActiveSlide}">
-                        <img :src="element.image" alt="element.title">
+                    <div @click="immediatelyActive(index)" v-for="element, index in slides" class="single-thumb" :class="{'active': index === currentActiveSlide}">
+                        <img  :src="element.image" alt="element.title">
                     </div>
                 </div>
     
