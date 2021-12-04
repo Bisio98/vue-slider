@@ -4,6 +4,7 @@ var app = new Vue({
     el: '#root',
     data: {
         currentActiveSlide: 0,
+        counterclock: null,
         slides: [
             {
                 image: 'img/01.jpg',
@@ -45,15 +46,21 @@ var app = new Vue({
         },
         immediatelyActive: function(index) {
             this.currentActiveSlide = index;
+        },
+        autoPlay: function(){
+            this.counterclock = setInterval(() => {
+                if(this.currentActiveSlide < this.slides.length -1){
+                    this.currentActiveSlide++;
+                }else{
+                    this.currentActiveSlide = 0;
+                }
+            }, 500)
+        },
+        hoverSlider: function() {
+            clearInterval(this.counterclock)
         }
     },
     created: function () {
-        setInterval(() => {
-            if(this.currentActiveSlide < this.slides.length -1){
-                this.currentActiveSlide++;
-            }else{
-                this.currentActiveSlide = 0;
-            }
-        }, 3000)
+        this.autoPlay();
     }
 });
